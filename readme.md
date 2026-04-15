@@ -217,7 +217,88 @@ git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
 
 # Google Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt -f install -y
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt update && sudo apt install google-chrome-stable -y
 ```
+
+---
+
+## 7. Основные команды терминала Linux
+
+### Навигация
+
+| Команда | Что делает |
+|---|---|
+| `pwd` | Показать текущую папку |
+| `ls` | Список файлов в папке |
+| `ls -la` | Список файлов с деталями (включая скрытые) |
+| `cd projects` | Перейти в папку projects |
+| `cd ..` | Вернуться на уровень выше |
+| `cd ~` | Перейти в домашнюю папку |
+
+### Файлы и папки
+
+| Команда | Что делает |
+|---|---|
+| `mkdir myapp` | Создать папку myapp |
+| `touch index.html` | Создать пустой файл |
+| `cp file.txt copy.txt` | Копировать файл |
+| `mv file.txt folder/` | Переместить файл |
+| `mv old.txt new.txt` | Переименовать файл |
+| `rm file.txt` | Удалить файл |
+| `rm -r folder` | Удалить папку с содержимым |
+| `cat file.txt` | Показать содержимое файла |
+
+### Установка программ (apt)
+
+| Команда | Что делает |
+|---|---|
+| `sudo apt update` | Обновить список пакетов |
+| `sudo apt upgrade -y` | Обновить все программы |
+| `sudo apt install имя -y` | Установить программу |
+| `sudo apt remove имя` | Удалить программу |
+
+### Node.js / npm (фронтенд)
+
+| Команда | Что делает |
+|---|---|
+| `node -v` | Версия Node.js |
+| `npm -v` | Версия npm |
+| `npm init -y` | Создать package.json |
+| `npm install` | Установить зависимости |
+| `npm run dev` | Запустить dev-сервер |
+| `npx create-react-app myapp` | Создать React-проект |
+| `npx create-next-app myapp` | Создать Next.js-проект |
+
+### Git
+
+| Команда | Что делает |
+|---|---|
+| `git clone url` | Клонировать репозиторий |
+| `git status` | Статус изменений |
+| `git add .` | Добавить все файлы |
+| `git commit -m "текст"` | Зафиксировать изменения |
+| `git push` | Отправить на GitHub |
+| `git pull` | Получить изменения с GitHub |
+| `git branch` | Список веток |
+| `git checkout -b new-branch` | Создать и перейти на новую ветку |
+
+### Полезное
+
+| Команда | Что делает |
+|---|---|
+| `clear` | Очистить терминал |
+| `history` | История команд |
+| `Ctrl + C` | Остановить текущий процесс |
+| `Ctrl + L` | Очистить экран |
+| `Tab` | Автодополнение (имена файлов/команд) |
+| `code .` | Открыть VS Code в текущей папке |
+
+### Права доступа
+
+| Команда | Что делает |
+|---|---|
+| `sudo команда` | Выполнить от имени администратора |
+| `chmod +x script.sh` | Сделать файл исполняемым |
+| `./script.sh` | Запустить скрипт |
